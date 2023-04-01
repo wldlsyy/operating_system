@@ -48,7 +48,6 @@ int vector_add(vector *v, int data){
 
 int main(int argc, char *argv[]){
     int n, i;
-    int *data;
     vector v;
 
     vector_init(&v); // initialize vector
@@ -56,12 +55,9 @@ int main(int argc, char *argv[]){
     printf("How many entries do you want to add?: ");
     scanf("%d", &n); // n -> count
 
-    data = (int*) malloc(sizeof(int) * n);
-
     srand((unsigned int)time(NULL));
     for (i=0;i<n;i++){
-        data[i] = rand()%100; // process random data
-        vector_add(&v, data[i]);
+        vector_add(&v, rand()%100); // process random data and add to vector
     }
 
     // Print out the data in the vector
@@ -71,7 +67,6 @@ int main(int argc, char *argv[]){
     }
     printf("\n");
 
-    free(data);
     free(v.data); // free memory
 
     return 0;
